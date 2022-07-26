@@ -14,9 +14,10 @@ public class BlackjackGameSimulator {
      * This main class executes the steps through the Blackjack game
      *
      * @param args
+     * @return void
      */
     public static void main(String[] args) {
-        System.out.println("Hello, World!");
+        System.out.println("\nWelcome to Blackjack!\n");
     } // end main
 
 } // end BlackjackGameSimulator class
