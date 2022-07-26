@@ -2,7 +2,7 @@
 
 ## Program Specification _(Re-Written)_
 
-Below is a re-write of the original program specification. The re-write consists of splictting up the paragraph into a game rhythm. The game rules are used to define the beginning, middle, and end states of the game and program, and within each state there are steps the program must take to go from state to state.
+Below is a re-write of the original program specification. The re-write splits up and re-organizes the original paragraph into a game rhythm. The game rules are used to define the beginning, middle, and end states of the game and program, and within each state there are steps the program must take to go from state to state.
 
 This project involves writing a program to simulate a blackjack card game. A simple console-based user interface was created to implement this game. An object-oriented solution was used for implementing this game.
 
@@ -43,8 +43,10 @@ As written in the re-write version of the Program Specification, much of the tho
 
 ### Assumptions
 
-- The Joker cards (2) are removed from the deck resulting in a standard 52-card playing deck.
+- The Joker cards (2) are removed from the deck resulting in a standard 52-card playing deck
 - The "user interface" is mainly a set of Scanners seeking user input for each step of the game - no graphical user interface needs to be implemented in console
+- The dealer is not a playable participant, and the user may only take the Player role
+- There is only 1 player (user) and 1 dealer in the game.
 
 ### Diagram
 
@@ -68,8 +70,15 @@ There are several major chunks of the game that are needed to create a functiona
 
 1. _Deck of Cards_: This is an object that stores the deck (52 cards), the standard/set values of the cards, and the adjustable value of the Ace. It will also store the methods for manipulating the deck, namely the use of the Random
 2. _Random Deck Generator_: This is the functional component that is capable of generating a standard deck of cards in a random order for the start of the game. The output would be an an object described in the _Deck of Cards_.
+3. _Participant_: This is the superclass for the Player (user) and the Dealer (computer), used to store their decided value of the Ace, their current cards-in-hand value, and their current money (if applicable).
+4. _Black Jack Game_: This is the functional component of the game that contains the main() block, where a majority of the instantiations and method-calls are being performed by the program. Here, the game runs from beginning, to middle, to end, and then either jumps back to beginning or ends the program based on the user's choice.
+5. _User Decisions_: This functional component houses all of the possible choices the user can be prompted to make. This provides a way to centralize decision-oriented components that could be re-usable, and to abstract more lines of code away from the main _Black Jack Game_.
 
 What alternative design approaches were considered and why were they rejected?
+
+- There is a possibility that the _Black Jack Game_ implements and defines all the _User Decisions_ inside of itself; however, abstracting away complexity into other chunks of the overall program makes it easier to read and comprehend each individual component of the program.
+- The _Deck of Cards_ could be combined with the _Random Deck Generator_, however, I believe that it would be easier to manage smaller components with less variables and methods. _Random Deck Generator_ is a complex enough function to warrant its own file and location in the program.
+- _Participant_ can also be split into a explicit, hard-coded objects, Dealer and Player. This approach was not ideal and would make the game not extensible. There is a possibility that there are multiple players playing against the dealer concurrently, like in a Casino setting, so it would make more sense to instantiate those players and dealers as instances of _Participant_.
 
 ## Implementation Code
 
