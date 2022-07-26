@@ -61,18 +61,56 @@ The sequence diagram was built using [mermaid.js](https://mermaid-js.github.io/m
 sequenceDiagram
   autonumber
 
-  participant Dealer
   participant Game
   participant Player
 
-  break when the Player enters an integer
-    Game -->> Player: Prompts Player for cash-on-hand.
-    Player -->> Game: Provides cash-on-hand value.
-  end
+    break when the Player ends the game
+      loop until the Player enters integer
+        Game ->> Player: Prompts for cash-on-hand
+        Player ->> Game: Provides cash-on-hand value
+      end
 
-  Game -->> Game: Generates random deck of cards
-  Game -->> Player: Instantiates Player with cash-on-hand
-  Game -->> Dealer: Instantiates Dealer with no cash-on-hand
+        Game --> Game: Generates random deck of cards
+        Game ->> Player: Instantiates w/ cash-on-hand
+
+        break when the Player's cash-on-hand is =0 or Player ends the game
+          loop until Player enters integer <= cash-on-hand, >0
+            Game ->> Player: Prompts for bet
+            Player ->> Game: Provides bet value
+          end
+
+          Game ->> Player: Deals 2 random cards
+          Player ->> Game: Decides if Ace is worth 1 or 11
+
+          alt Player hand is >21
+            Game ->> Player: Decrements cash-on-hand by bet
+            Note over Game,Player: Go to Step 5, check cash-on-hand, ask if Player wants to end game
+          else Player hand <21
+            Game ->> Player: Hit or Stay?
+
+            break when Player Stays or hand is >21
+              Game ->> Player: Deals 1 random card
+            end
+
+            break when hand is >=17
+              Game --> Game: Deals 1 random card
+            end
+
+            alt Game (Dealer) hand >21
+              Game ->> Player: Player wins! Increment cash-on-hand by bet
+              Note over Game,Player: Go to Step 5, check cash-on-hand, ask if Player wants to end game
+            else Game (Dealer) hand <21
+              alt Game (Dealer) hand > Player hand
+                Game ->> Player: Player loses!
+                Note over Game,Player: Go to Step 5, check cash-on-hand, ask if Player wants to end game
+              else Game (Dealer) hand < Player hand
+                Game ->> Player: Player wins! Increment cash-on-hand by bet
+                Note over Game,Player: Go to Step 5, check cash-on-hand, ask if Player wants to end game
+              end
+            end
+          end
+        end
+    end
 
 ```
 
@@ -99,6 +137,8 @@ What alternative design approaches were considered and why were they rejected?
 ## Implementation Output
 
 Below is an output in the VSCode Integrated Terminal.
+
+<img src="./BlackJack-Completed.png" alt="./BlackJack-Completed.png">
 
 ## Implementation Code
 
