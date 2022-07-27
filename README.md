@@ -57,7 +57,9 @@ Below is a sequence diagram based on the re-write version of the program specifi
 
 The sequence diagram was built using [mermaid.js](https://mermaid-js.github.io/mermaid/#/), a markdown language for building Unified Modelling Language (UML) Diagrams, Entity Relationship Diagrams (ERDs), Sequence Diagrams and more.
 
-```mermaid
+The mermaid diagram below only builds in the VSCode previewer but not when it is live on Github. Please see [Blackjack-Diagram](Blackjack-Diagram.PNG) for the rendering of the diagram.
+
+```
 sequenceDiagram
   autonumber
 
@@ -111,7 +113,6 @@ sequenceDiagram
           end
         end
     end
-
 ```
 
 ### Discussion
