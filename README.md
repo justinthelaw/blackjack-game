@@ -50,6 +50,7 @@ As written in the re-write version of the Program Specification, much of the tho
 - The dealer is not a playable participant, and the user may only take the Player role
 - There is only 1 player (user) and 1 dealer in the game.
 - User input error handling will only loop (ask the same question) until the user enters an acceptable response
+- The suit of the card does not affect gameplay and thus does not need to be represented in the code or program
 
 ### Diagram
 
@@ -123,11 +124,10 @@ Please refer to the javadoc comments within each file for details on the functio
 
 There are several major chunks of the game that are needed to create a functional:
 
-1. _Deck of Cards_: This is an object that stores the deck (52 cards), the standard/set values of the cards, and the adjustable value of the Ace. It will also store the methods for manipulating the deck, namely the use of the Random
-2. _Random Deck Generator_: This is the functional component that is capable of generating a standard deck of cards in a random order for the start of the game. The output would be an an object described in the _Deck of Cards_.
-3. _Participant_: This is the superclass for the Player (user) and the Dealer (computer), used to store their decided value of the Ace, their current cards-in-hand value, and their current money (if applicable).
-4. _Black Jack Game_: This is the functional component of the game that contains the main() block, where a majority of the instantiations and method-calls are being performed by the program. Here, the game runs from beginning, to middle, to end, and then either jumps back to beginning or ends the program based on the user's choice.
-5. _User Decisions_: This functional component houses all of the possible choices the user can be prompted to make. This provides a way to centralize decision-oriented components that could be re-usable, and to abstract more lines of code away from the main _Black Jack Game_.
+1. _Deck of Cards_: This is an object that stores the deck (52 cards), the standard/set values of the cards, and the adjustable value of the Ace. It will also store the methods for manipulating the deck and drawing a card.
+2. _Participant_: This is the superclass for the Player (user) and the Dealer (computer), used to store their decided value of the Ace, their current cards-in-hand value, and their current money (if applicable).
+3. _Black Jack Game_: This is the functional component of the game that contains the main() block, where a majority of the instantiations and method-calls are being performed by the program. Here, the game runs from beginning, to middle, to end, and then either jumps back to beginning or ends the program based on the user's choice.
+4. _User Decisions_: This functional component houses all of the possible choices the user can be prompted to make. This provides a way to centralize decision-oriented components that could be re-usable, and to abstract more lines of code away from the main _Black Jack Game_.
 
 What alternative design approaches were considered and why were they rejected?
 
