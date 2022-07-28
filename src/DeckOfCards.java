@@ -1,4 +1,3 @@
-
 /**
  * This class contains all the standards and methods for building and
  * manipulating a deck of cards without Jokers.
@@ -15,6 +14,7 @@ import java.util.Arrays;
 public class DeckOfCards {
    private Stack<Card> DECK = new Stack<Card>();
    private final int CARD_AMOUNT = 4;
+   // the following are coupled (1:1) arrays required to build a deck of cards
    private final String[] CARD_TYPES = { "Ace", "2", "3", "4", "5", "6",
          "7", "8", "9", "10", "Jack", "Queen", "King" };
    private final int[] CARD_VALUES = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 };
