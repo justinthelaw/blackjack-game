@@ -51,6 +51,7 @@ As written in the re-write version of the Program Specification, much of the tho
 - There is only 1 player (user) and 1 dealer in the game.
 - User input error handling will only loop (ask the same question) until the user enters an acceptable response
 - The suit of the card does not affect gameplay and thus does not need to be represented in the code or program
+- The sum of money provided to the player is hard coded and can only be changed in the code
 
 ### Diagram
 

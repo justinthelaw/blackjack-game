@@ -15,13 +15,13 @@ public class Participant {
    // default constructor
    Participant(String name) {
       this.name = name;
-   }
+   } // end Participant
 
    // overloaded constructor
    Participant(String name, int cash) {
       this.name = name;
       this.cash = cash;
-   }
+   } // end Participant
 
    /**
     * Adds points to participants score and returns the result
@@ -30,7 +30,7 @@ public class Participant {
     */
    public int addScore(int points) {
       return this.score += points;
-   }
+   } // end addScore
 
    /**
     * Adds (+) / Subtracts (-) cash from participants cash on hand and
@@ -40,7 +40,7 @@ public class Participant {
     */
    public int modifyCash(int cash) {
       return this.cash += cash;
-   }
+   } // end modifyCash
 
    /**
     * Returns the participant's name
@@ -49,7 +49,16 @@ public class Participant {
     */
    public String getName() {
       return this.name;
-   }
+   } // end getName
+
+   /**
+    * Returns the participant's cash on hand
+    *
+    * @return int
+    */
+   public int getCash() {
+      return this.cash;
+   } // end get Cash
 
    /**
     * Returns a string representation of the participants name, cash, and
@@ -59,5 +68,5 @@ public class Participant {
     */
    public String toString() {
       return "Name: " + name + " | Cash: $" + cash + " | Score: " + score;
-   }
-}
+   } // end toString
+} // end Participant class

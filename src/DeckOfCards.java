@@ -23,7 +23,7 @@ public class DeckOfCards {
    DeckOfCards() {
       buildDeck();
       shuffleDeck();
-   }
+   } // end DeckOfCards
 
    /**
     * Generates a new deck using available card types and amount of each
@@ -39,7 +39,7 @@ public class DeckOfCards {
             this.DECK.push(card);
          }
       }
-   }
+   } // end buildDeck
 
    /**
     * Shuffles the order of cards in an existing deck
@@ -49,7 +49,7 @@ public class DeckOfCards {
    private void shuffleDeck() {
       // randomize the order of the deck's stack of cards
       Collections.shuffle(this.DECK);
-   }
+   } // end shuffleDeck
 
    /**
     * Returns the type of the card from the top of the stack and
@@ -60,7 +60,7 @@ public class DeckOfCards {
    public Card drawCard() {
       // remove a card from the deck stack and return the value of that card
       return this.DECK.pop();
-   }
+   } // end drawCard
 
    /**
     * Returns a string representation of the stack of cards in their
@@ -70,7 +70,7 @@ public class DeckOfCards {
     */
    public String toString() {
       return "Current Deck: " + this.DECK.toString();
-   }
+   } // end toString
 
    /**
     * Returns the number of cards left in a deck
@@ -79,7 +79,7 @@ public class DeckOfCards {
     */
    public int getCurrentDeckSize() {
       return this.DECK.size();
-   }
+   } // end getCurrentDeckSize
 
    /**
     * Returns a string representation of the types of cards in the deck
@@ -88,6 +88,6 @@ public class DeckOfCards {
     */
    public String getCardTypes() {
       return Arrays.toString(this.CARD_TYPES);
-   }
+   } // end getCardTypes
 
-}
+} // end DeckOfCards class

@@ -15,7 +15,7 @@ public class Card {
    Card(String type, int value) {
       this.type = type;
       this.value = value;
-   }
+   } // end Card
 
    /**
     * A method for changing the value of a card, namely the Ace at the end of the
@@ -25,7 +25,7 @@ public class Card {
     */
    public void setValue(int newValue) {
       this.value = newValue;
-   }
+   } // end setValue
 
    /**
     * Returns a string representation of the card's type and value
@@ -34,5 +34,5 @@ public class Card {
     */
    public String toString() {
       return "Type: " + this.type + " | Value: " + this.value;
-   }
-}
+   } // end toString
+} // end Card class
