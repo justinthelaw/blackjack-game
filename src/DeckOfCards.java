@@ -1,3 +1,4 @@
+
 /**
  * This class contains all the standards and methods for building and
  * manipulating a deck of cards without Jokers.
@@ -12,10 +13,11 @@ import java.util.Collections;
 import java.util.Arrays;
 
 public class DeckOfCards {
-   private Stack<String> DECK = new Stack<String>();
+   private Stack<Card> DECK = new Stack<Card>();
    private final int CARD_AMOUNT = 4;
    private final String[] CARD_TYPES = { "Ace", "2", "3", "4", "5", "6",
          "7", "8", "9", "10", "Jack", "Queen", "King" };
+   private final int[] CARD_VALUES = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 };
 
    // default constructor
    DeckOfCards() {
@@ -30,8 +32,10 @@ public class DeckOfCards {
     * @return void
     */
    private void buildDeck() {
-      for (String card : this.CARD_TYPES) {
-         for (int i = 0; i < this.CARD_AMOUNT; i++) {
+      // for each card type, add 4 of that card to the deck
+      for (int i = 0; i < this.CARD_TYPES.length; i++) {
+         for (int j = 0; j < this.CARD_AMOUNT; j++) {
+            Card card = new Card(this.CARD_TYPES[i], this.CARD_VALUES[i]);
             this.DECK.push(card);
          }
       }
@@ -43,6 +47,7 @@ public class DeckOfCards {
     * @return void
     */
    private void shuffleDeck() {
+      // randomize the order of the deck's stack of cards
       Collections.shuffle(this.DECK);
    }
 
@@ -52,7 +57,8 @@ public class DeckOfCards {
     *
     * @return String
     */
-   public String drawCard() {
+   public Card drawCard() {
+      // remove a card from the deck stack and return the value of that card
       return this.DECK.pop();
    }
 
