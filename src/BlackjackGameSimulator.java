@@ -9,31 +9,31 @@
  */
 
 public class BlackjackGameSimulator {
-    // player's starting cash on hand
-    public static final int CASH = 100;
 
-    /**
-     * This main class executes the steps through the Blackjack game
-     *
-     * @param args
-     * @return void
-     */
-    public static void main(String[] args) {
-        // Introduction message
-        System.out.println("\n🂿🂡🃴🃞 Command-Line Blackjack 🃞🃴🂡🂿\n");
+   public static String playerName;
+   public static Participant player;
+   public static Participant dealer;
 
-        // Instantiate player (w/ name), dealer, and a shuffled deck of cards
-        String playerName = UserDecisions.whatIsYourName();
-        Participant player = new Participant(playerName, CASH);
-        Participant dealer = new Participant("Dealer");
-        DeckOfCards deck = new DeckOfCards();
+   /**
+    * This main class executes the steps through the Blackjack game
+    *
+    * @param args
+    * @return void
+    */
+   public static void main(String[] args) {
+      // Introduction message
+      System.out.println("\n🂿🂡🃴🃞 Java CLI Blackjack 🃞🃴🂡🂿\n");
+      newGame();
+   } // end main
 
-        // Tells player how muhc money they start with
-        System.out.println("Welcome, " + player.getName() + "! Your current cash on hand is $" + CASH + "\n");
+   public static void newGame() {
+      // Instantiate player (w/ name), dealer, and a shuffled deck of cards
+      playerName = Game.enterName();
+      player = new Participant(playerName, Game.CASH);
+      dealer = new Participant("Dealer");
+      Game.playGame(player, dealer, playerName);
+   }
 
-        // Asks player to place a bet for the first round of gameplay
-        int currentBet = UserDecisions.howMuchAreYouBetting(player.getCash());
-        System.out.println(playerName + " has placed a $" + currentBet + " bet!\n");
-    } // end main
+
 
 } // end BlackjackGameSimulator class

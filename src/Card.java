@@ -28,6 +28,24 @@ public class Card {
    } // end setValue
 
    /**
+    * Returns a string representaion of the card's type
+    *
+    * @return String
+    */
+   public String getType() {
+      return this.type;
+   } // end getType
+
+   /**
+    * Returns the value of the card
+    *
+    * @return int
+    */
+   public int getValue() {
+      return this.value;
+   } // end getValue
+
+   /**
     * Returns a string representation of the card's type and value
     *
     * @return String

@@ -8,9 +8,12 @@
  */
 
 public class Participant {
+   public Card[] cards = {}; // viewable by all players
+
    private String name; // identifier
    private int cash; // cash on hand for betting
    private int score = 0; // current cumilative points
+   private int aceValue = 1; // chosen value of ace
 
    // default constructor
    Participant(String name) {
@@ -24,13 +27,24 @@ public class Participant {
    } // end Participant
 
    /**
-    * Adds points to participants score and returns the result
+    * Calculate cards-in-hand score and returns the result
     *
     * @return int
     */
-   public int addScore(int points) {
-      return this.score += points;
-   } // end addScore
+   public int calculateScore() {
+      int newScore = 0;
+      // increment score by each card in their hand
+      for (Card card : this.cards) {
+         if (card.getType() == "Ace") {
+            // Ace goes by the their chosen Ace value
+            newScore += this.aceValue;
+         } else {
+            newScore += card.getValue();
+         }
+      }
+      this.score = newScore;
+      return this.score;
+   } // end calculateScore
 
    /**
     * Adds (+) / Subtracts (-) cash from participants cash on hand and
@@ -41,6 +55,33 @@ public class Participant {
    public int modifyCash(int cash) {
       return this.cash += cash;
    } // end modifyCash
+
+   /**
+    * Set's the participant's Ace value
+    *
+    * @return void
+    */
+   public void setAceValue(int value) {
+      this.aceValue = value;
+   } // end aceValue
+
+   /**
+    * Adds a card to the participant's hand, and then
+    * print the cards in their hand
+    *
+    * @return String
+    */
+   public String modifyCards(Card drawnCard) {
+      int size = cards.length;
+      int newSize = size + 1;
+      Card[] newHand = new Card[newSize];
+      for (int i = 0; i < this.cards.length; i++) {
+         newHand[i] = this.cards[i];
+      }
+      newHand[size] = drawnCard;
+      this.cards = newHand;
+      return this.cards.toString();
+   } // end modifyCards
 
    /**
     * Returns the participant's name
@@ -58,7 +99,16 @@ public class Participant {
     */
    public int getCash() {
       return this.cash;
-   } // end get Cash
+   } // end getCash
+
+   /**
+    * Returns the participant's score on hand
+    *
+    * @return int
+    */
+   public int getScore() {
+      return this.score;
+   } // end getScore
 
    /**
     * Returns a string representation of the participants name, cash, and
@@ -67,6 +117,7 @@ public class Participant {
     * @return String
     */
    public String toString() {
-      return "Name: " + name + " | Cash: $" + cash + " | Score: " + score;
+      return "Name: " + name + " | Cash: $" + cash + " | Score: " + score +
+            " | Ace Value: " + aceValue + " | Cards: " + cards.toString();
    } // end toString
 } // end Participant class
