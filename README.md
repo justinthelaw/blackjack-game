@@ -133,7 +133,7 @@ There are several major chunks of the game that are needed to create a functiona
 
 What alternative design approaches were considered and why were they rejected?
 
-- There is a possibility that the _Black Jack Game_ implements and defines all the _User Decisions_ inside of itself; however, abstracting away complexity into other chunks of the overall program makes it easier to read and comprehend each individual component of the program.
+- There is a possibility that the _Black Jack Game_ implements and defines all the _Game_ logic inside of itself; however, abstracting away complexity into other chunks of the overall program makes it easier to read and comprehend each individual component of the program.
 - The _Deck of Cards_ could be combined with the _Random Deck Generator_, however, I believe that it would be easier to manage smaller components with less variables and methods. _Random Deck Generator_ is a complex enough function to warrant its own file and location in the program.
 - _Participant_ can also be split into a explicit, hard-coded objects, Dealer and Player. This approach was not ideal and would make the game not extensible. There is a possibility that there are multiple players playing against the dealer concurrently, like in a Casino setting, so it would make more sense to instantiate those players and dealers as instances of _Participant_.
 
