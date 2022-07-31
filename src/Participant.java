@@ -47,6 +47,18 @@ public class Participant {
    } // end calculateScore
 
    /**
+    * Reset the turns, score and cards for new round
+    *
+    * @return void
+    */
+   public void reset() {
+      this.score = 0;
+      this.cards = new Card[] {};
+      Game.playerFirstTurn = false;
+      Game.dealerFirstTurn = false;
+   } // end reset score
+
+   /**
     * Adds (+) / Subtracts (-) cash from participants cash on hand and
     * returns the result
     *

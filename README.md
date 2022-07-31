@@ -129,7 +129,7 @@ There are several major chunks of the game that are needed to create a functiona
 2. _Card_: This is an object that will store the card's value and name. 52 of these will be instantiated and placed in the Deck of Cards.
 3. _Participant_: This is the superclass for the Player (user) and the Dealer (computer), used to store their decided value of the Ace, their current cards-in-hand value, and their current money (if applicable).
 4. _Black Jack Game_: This is the functional component of the game that contains the main() block, where a majority of the instantiations and method-calls are being performed by the program. Here, the game runs from beginning, to middle, to end, and then either jumps back to beginning or ends the program based on the user's choice.
-5. _User Decisions_: This functional component houses all of the possible choices the user can be prompted to make. This provides a way to centralize decision-oriented components that could be re-usable, and to abstract more lines of code away from the main _Black Jack Game_.
+5. _Game_: This functional component houses all of the possible choices the user can be prompted to make. This provides a way to centralize decision-oriented components that could be re-usable, and to abstract more lines of code away from the main _Black Jack Game_.
 
 What alternative design approaches were considered and why were they rejected?
 
@@ -141,7 +141,18 @@ What alternative design approaches were considered and why were they rejected?
 
 Below is an output in the VSCode Integrated Terminal.
 
-<img src="./BlackJack-Completed.png" alt="./BlackJack-Completed.png">
+Program Run #1
+
+<img src="./Blackjack-Completed-1.PNG" alt="./Blackjack-Completed-1.PNG" width="50%">
+<img src="./Blackjack-Completed-2.PNG" alt="./Blackjack-Completed-2.PNG" width="50%">
+<img src="./Blackjack-Completed-3.PNG" alt="./Blackjack-Completed-3.PNG" width="50%">
+
+---
+
+Program Run #2
+
+<img src="./Blackjack-Completed-4.PNG" alt="./Blackjack-Completed-4.PNG" width="50%">
+<img src="./Blackjack-Completed-5.PNG" alt="./Blackjack-Completed-5.PNG" width="50%">
 
 ## Implementation Code
 
