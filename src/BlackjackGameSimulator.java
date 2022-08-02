@@ -21,6 +21,7 @@ public class BlackjackGameSimulator {
       System.out.println("\n🂿🂡🃴🃞 Java CLI Blackjack 🃞🃴🂡🂿\n");
       // starts a new game
       newGame(null);
+      Game.input.close();
       System.out.println("Thank you for playing!\n");
    } // end main
 
@@ -56,6 +57,7 @@ public class BlackjackGameSimulator {
             Game.playGame(player, dealer, playerName);
          } else {
             // if out of cash, start entirely new game
+            System.out.println("Starting a new game with reset cash-on-hand!");
             newGame(playerName);
          }
       } while (Game.playAgain());

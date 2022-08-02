@@ -11,6 +11,10 @@ import java.util.Scanner;
 
 public class Game {
 
+   // scanner for grabbing user input
+   // can be closed from the main file
+   public static Scanner input = new Scanner(System.in);
+
    // player's starting cash on hand
    // accessible by the main function
    public static final int STARTING_CASH = 100;
@@ -18,9 +22,6 @@ public class Game {
    // tracks whether it's the participant's 1st turn
    public static Boolean playerFirstTurn = false;
    public static Boolean dealerFirstTurn = false;
-
-   // scanner for grabbing user input
-   private static Scanner input = new Scanner(System.in);
 
    // variable to store the participants and deck instances
    private static Participant player;
