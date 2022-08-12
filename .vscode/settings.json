@@ -4,8 +4,8 @@
     "java.project.referencedLibraries": [
         "lib/**/*.jar"
     ],
-    "javadoc-tools.generateJavadoc.targetFolder": "./",
-    "javadoc-tools.generateJavadoc.workspaceSourceFolder": "./",
+    "javadoc-tools.generateJavadoc.targetFolder": "",
+    "javadoc-tools.generateJavadoc.workspaceSourceFolder": "",
     "java.format.settings.url": "./.vscode/java-formatter.xml",
     "[java]": {
         "editor.tabSize": 3
