@@ -1,8 +1,11 @@
 # Blackjack
 
-To run this program, either double-click on the jar file as an executable or execute `java -jar ${InsertYourDirectoryHere}/blackjack.jar` in your terminal. You will need a computer system with Java 7 or greater SE edition run-time and JDK. You may optionally use a Java IDE for example NetBeans, Eclipse, VSCode (w/ Java extensions) etc.
+## Implementations
 
-## Program Specification _(Re-Written)_
+- [Java Implementation](./java/README.md)
+- [TypeScript Implementation](./typescript/README.md)
+
+## Program Specification
 
 Below is a re-write of the original program specification. The re-write splits up and re-organizes the original paragraph into a game rhythm. The game rules are used to define the beginning, middle, and end states of the game and program, and within each state there are steps the program must take to go from state to state.
 
@@ -116,44 +119,3 @@ sequenceDiagram
         end
     end
 ```
-
-### Discussion
-
-What is the current design approach?
-
-Please refer to the javadoc comments within each file for details on the functionality of each class and its methods. Alternatively, the javadoc comments can be exported into a javadoc for organizing and viewing in a web browser.
-
-There are several major chunks of the game that are needed to create a functional:
-
-1. _Deck of Cards_: This is an object that stores the deck (52 cards), the standard/set values of the cards, and the adjustable value of the Ace. It will also store the methods for manipulating the deck and drawing a card. A Stack, a derivative implementation of the Collection utility data structure, was used to store the cards in drawing order, similar to how a real deck of cards would be organized.
-2. _Card_: This is an object that will store the card's value and name. 52 of these will be instantiated and placed in the Deck of Cards.
-3. _Participant_: This is the superclass for the Player (user) and the Dealer (computer), used to store their decided value of the Ace, their current cards-in-hand value, and their current money (if applicable).
-4. _Black Jack Game_: This is the functional component of the game that contains the main() block, where a majority of the instantiations and method-calls are being performed by the program. Here, the game runs from beginning, to middle, to end, and then either jumps back to beginning or ends the program based on the user's choice.
-5. _Game_: This functional component houses all of the possible choices the user can be prompted to make. This provides a way to centralize decision-oriented components that could be re-usable, and to abstract more lines of code away from the main _Black Jack Game_.
-
-What alternative design approaches were considered and why were they rejected?
-
-- There is a possibility that the _Black Jack Game_ implements and defines all the _Game_ logic inside of itself; however, abstracting away complexity into other chunks of the overall program makes it easier to read and comprehend each individual component of the program.
-- The _Deck of Cards_ could be combined with the _Random Deck Generator_, however, I believe that it would be easier to manage smaller components with less variables and methods. _Random Deck Generator_ is a complex enough function to warrant its own file and location in the program.
-- _Participant_ can also be split into a explicit, hard-coded objects, Dealer and Player. This approach was not ideal and would make the game not extensible. There is a possibility that there are multiple players playing against the dealer concurrently, like in a Casino setting, so it would make more sense to instantiate those players and dealers as instances of _Participant_.
-
-## Implementation Output
-
-Below is an output in the VSCode Integrated Terminal.
-
-Program Run #1
-
-<img src="./Blackjack-Completed-1.PNG" alt="./Blackjack-Completed-1.PNG" width="50%">
-<img src="./Blackjack-Completed-2.PNG" alt="./Blackjack-Completed-2.PNG" width="50%">
-<img src="./Blackjack-Completed-3.PNG" alt="./Blackjack-Completed-3.PNG" width="50%">
-
----
-
-Program Run #2
-
-<img src="./Blackjack-Completed-4.PNG" alt="./Blackjack-Completed-4.PNG" width="50%">
-<img src="./Blackjack-Completed-5.PNG" alt="./Blackjack-Completed-5.PNG" width="50%">
-
-## Implementation Code
-
-The program was written in VSCode on WSL 2, Ubuntu 20.04.4 LTS. Please refer to [./src](./src) for code.
