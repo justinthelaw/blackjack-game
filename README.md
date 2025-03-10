@@ -1,15 +1,15 @@
 # Blackjack
 
+This project involves writing a program to simulate a blackjack card game.
+
 ## Implementations
 
-- [Java Implementation](./java/README.md)
-- [TypeScript Implementation](./typescript/README.md)
+An object-oriented solution was used for implementing this game.
+
+- [Java Implementation](./java/README.md): in this implementation, a simple console-based user interface was created to implement this game.
+- [TypeScript Implementation](./typescript/README.md): in this implementation, the game is run at random until the player doubles their money or loses it all.
 
 ## Program Specification
-
-Below is a re-write of the original program specification. The re-write splits up and re-organizes the original paragraph into a game rhythm. The game rules are used to define the beginning, middle, and end states of the game and program, and within each state there are steps the program must take to go from state to state.
-
-This project involves writing a program to simulate a blackjack card game. A simple console-based user interface was created to implement this game. An object-oriented solution was used for implementing this game.
 
 ### _Beginning_
 

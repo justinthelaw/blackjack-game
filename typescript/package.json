@@ -1,0 +1,17 @@
+{
+  "name": "blackjack-game",
+  "version": "1.0.0",
+  "description": "To run this program, execute `npm start`.",
+  "main": "app.js",
+  "scripts": {
+    "game": "ts-node src/app.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^22.13.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2"
+  }
+}
