@@ -7,7 +7,7 @@ This project involves writing a program to simulate a blackjack card game.
 An object-oriented solution was used for implementing this game.
 
 - [Java Implementation](./java/README.md): in this implementation, a simple console-based user interface was created to implement this game.
-- [TypeScript Implementation](./typescript/README.md): in this implementation, the game is run at random until the player doubles their money or loses it all.
+- [TypeScript Implementation](./typescript/README.md): in this implementation, the game is run at random until the player loses all their money, or the deck doesn't have enough cards for another round.
 
 ## Program Specification
 
