@@ -1,4 +1,4 @@
-import { Rank, Suit, Face, Suits, Ranks, Faces, faceValues } from "./types";
+import { Rank, Suit, Face, Suits, Ranks, Faces, faceValues } from "./types/types";
 
 export default class Card {
   private _suit: Suits;

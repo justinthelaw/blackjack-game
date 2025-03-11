@@ -1,5 +1,5 @@
-import Deck from "./Deck";
-import Player from "./Player";
+import Deck from "../Deck";
+import Player from "../Player";
 
 export enum Suit {
   "clubs" = "♣️",
@@ -35,5 +35,6 @@ export interface DeckState {
 
 export interface GameState {
   players: { dealer: string; player: string };
-  deck: string;
+  remainingDeckSize: number;
+  bet: number;
 }

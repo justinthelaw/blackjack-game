@@ -1,5 +1,5 @@
 import Card from "./Card";
-import { DeckState, Face, Rank, Suit } from "./types";
+import { DeckState, Face, Rank, Suit } from "./types/types";
 import Stack from "./data/Stack";
 
 export default class Deck {

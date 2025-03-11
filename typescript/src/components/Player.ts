@@ -42,6 +42,6 @@ export default class Player {
   }
 
   public toString(): string {
-    return `Player[name=${this.name},cash=${this.cash},score=${this.score},wins=${this.wins}]`;
+    return `Player[name=${this.name},score=${this.score},wins=${this.wins},cash=${this.cash}]`;
   }
 }
