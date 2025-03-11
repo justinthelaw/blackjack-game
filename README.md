@@ -1,6 +1,6 @@
-# Blackjack
+# Card Games
 
-This project involves writing a program to manipulate a standard deck of cards, occasionally implementing games (e.g., blackjack, etc.) around the main card manipulation implementation, depending on how I feel.
+This project involves writing a program to manipulate a standard deck of cards, occasionally implementing games (e.g., blackjack, etc.) around the card manipulation implementation.
 
 ## Implementations
 
