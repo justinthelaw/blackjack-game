@@ -1,10 +1,12 @@
 # Java Implementation
 
-To run this program, either double-click on the jar file as an executable or execute `java -jar ${InsertYourDirectoryHere}/blackjack.jar` in your terminal. You will need a computer system with Java 7 or greater SE edition run-time and JDK. You may optionally use a Java IDE for example NetBeans, Eclipse, VSCode (w/ Java extensions) etc.
+To run this program, either double-click on the jar file as an executable or execute `java -jar ${InsertYourDirectoryHere}/blackjack.jar` in your terminal. You will need a computer system with Java 7 or greater SE edition run-time and JDK.
+
+You may optionally use a Java IDE for example NetBeans, Eclipse, VSCode (w/ Java extensions) etc.
 
 ## Program Specification
 
-### _Beginning_
+### 1. _Beginning_
 
 1. A simple blackjack card game consists of a player and a dealer.
    - There is only one deck of cards.
@@ -17,23 +19,23 @@ To run this program, either double-click on the jar file as an executable or exe
    - A player that goes over is out of the game.
    - The dealer must play by slightly different rules than a player, and the dealer does not place bets.
 
-### _Middle_
+### 2. _Middle_
 
-7. A player is dealt two cards face up.
+1. A player is dealt two cards face up.
    - It is up to Player / Dealer to decide whether the value of an Ace is 1 or 11, based on the hands they have.
    - If the point total is exactly 21 the player wins immediately.
-8. If the total is not 21, the dealer is dealt two cards, one face up and one face down.
-9. A player then determines whether to ask the dealer for another card (called a “hit”) or to “stay” with his/her current hand.
+2. If the total is not 21, the dealer is dealt two cards, one face up and one face down.
+3. A player then determines whether to ask the dealer for another card (called a “hit”) or to “stay” with his/her current hand.
    - A player may ask for several “hits.”
-10. When a player decides to “stay” the dealer begins to play.
-11. If the dealer has 21 it immediately wins the game. Otherwise, the dealer must take “hits” until the total points in its hand is 17 or over, at which point the dealer must “stay.”
-12. If the dealer goes over 21 while taking “hits” the game is over and the player wins.
-13. If the dealer’s points total exactly 21, the dealer wins immediately.
+4. When a player decides to “stay” the dealer begins to play.
+5. If the dealer has 21 it immediately wins the game. Otherwise, the dealer must take “hits” until the total points in its hand is 17 or over, at which point the dealer must “stay.”
+6. If the dealer goes over 21 while taking “hits” the game is over and the player wins.
+7. If the dealer’s points total exactly 21, the dealer wins immediately.
 
-### _End_
+### 3. _End_
 
-14. When the dealer and player have finished playing their hands, the one with the highest point total is the winner.
-15. Play is repeated until the player decides to quit or runs out of money to bet.
+1. When the dealer and player have finished playing their hands, the one with the highest point total is the winner.
+2. Play is repeated until the player decides to quit or runs out of money to bet.
 
 ## Program Design
 
@@ -117,15 +119,15 @@ sequenceDiagram
 
 Below is an output in the VSCode Integrated Terminal.
 
-Program Run #1
+### Program Run #1
 
-<img src="./docs/Blackjack-Completed-1.PNG" alt="./docs/Blackjack-Completed-1.PNG" width="50%">
-<img src="./docs/Blackjack-Completed-2.PNG" alt="./docs/Blackjack-Completed-2.PNG" width="50%">
-<img src="./docs/Blackjack-Completed-3.PNG" alt="./docs/Blackjack-Completed-3.PNG" width="50%">
+![Blackjack Completed 1](./docs/Blackjack-Completed-1.PNG)
+![Blackjack Completed 2](./docs/Blackjack-Completed-2.PNG)
+![Blackjack Completed 3](./docs/Blackjack-Completed-3.PNG)
 
 ---
 
-Program Run #2
+### Program Run #2
 
-<img src="./docs/Blackjack-Completed-4.PNG" alt="./docs/Blackjack-Completed-4.PNG" width="50%">
-<img src="./docs/Blackjack-Completed-5.PNG" alt="./docs/Blackjack-Completed-5.PNG" width="50%">
+![Blackjack Completed 4](./docs/Blackjack-Completed-4.PNG)
+![Blackjack Completed 5](./docs/Blackjack-Completed-5.PNG)
