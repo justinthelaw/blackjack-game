@@ -1,9 +1,9 @@
 # Card Games
 
-This project involves writing a program to manipulate a standard deck of cards, occasionally implementing games (e.g., blackjack, etc.) around the card manipulation implementation.
+This project involves writing CLI-based programs to manipulate a standard deck of cards. Occasionally, depending on how I feel, there are implementations of various games (e.g., blackjack, etc.) on top of the basic card manipulation implementation.
 
 ## Implementations
 
-- [Java Implementation](./java/README.md): full CLI-based blackjack game implementation, OOP
-- [TypeScript Implementation](./typescript/README.md): simple card, deck, players and game implementation, OOP
-- [Python Implementation](./python/README.md): ranking randomized poker hands, functional
+- [Java Implementation](./java/README.md): a fully interactive blackjack game implementation, OOP
+- [TypeScript Implementation](./typescript/README.md): a simple card, deck, players and game implementation, OOP
+- [Python Implementation](./python/README.md): a ranking implementation for randomized poker hands, functional
