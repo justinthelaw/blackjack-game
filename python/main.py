@@ -97,9 +97,26 @@ def determine_card_suit(card: Card):
     return card.suit
 
 
+tuple_to_hand: dict[tuple[int, ...], str] = {
+    (5,): "five of a kind",
+    (4, 2): "straight flush",
+    (4, 1): "four of a kind",
+    (3, 2): "full house",
+    (3, 1, 3): "flush",
+    (3, 1, 2): "straight",
+    (3, 1, 1): "three of a kind",
+    (2, 2, 1): "two pair",
+    (2, 1, 1, 1): "one pair",
+    (1, 1, 1, 1, 1): "high card",
+}
+
+
 def determine_hand(poker_hand: list[Card]):
-    
-    
+    rank_counts = Counter(map(determine_card_rank, poker_hand))
+    sorted_rank_counts = tuple(sorted(rank_counts.values(), reverse=True))
+
+    return tuple_to_hand[sorted_rank_counts]
+
     ######################
     # MANUAL IF-STATEMENTS
     ######################
@@ -136,116 +153,108 @@ def determine_hand(poker_hand: list[Card]):
 
     # return "high card"
 
-    return ""
+
+def print_debug(hand):
+    sorted_poker_hand = sorted(hand, key=determine_card_rank, reverse=True)
+    card_counts = dict(Counter(hand))
+    rank_counts = dict(Counter(map(determine_card_rank, hand)))
+    sorted_rank_counts = tuple(sorted(rank_counts.values(), reverse=True))
+    suit_counts = dict(Counter(map(determine_card_suit, hand)))
+    print("\tSorted Poker Hand:", sorted_poker_hand)
+    print("\tCard counts:", card_counts)
+    print("\tSorted Rank Counts:", sorted_rank_counts)
+    print("\tSuit Counts:", suit_counts)
+    print("\tSuit Counts:", suit_counts, "\n")
 
 
 def test(hand: list[Card], expected_category: str):
-    sorted_poker_hand = sorted(hand, key=determine_card_rank, reverse=True)
     resulting_category = determine_hand(hand)
-    card_counts = dict(Counter(hand))
-    rank_counts = dict(Counter(map(determine_card_rank, hand)))
-    suit_counts = dict(Counter(map(determine_card_suit, hand)))
 
     if expected_category == "FAIL_ME":
         print("CONTROL HAND:")
         print("\tResulting Category:", resulting_category)
-        print("\tSorted Poker Hand:", sorted_poker_hand)
-        print("\tCard counts:", card_counts)
-        print("\tRank Counts:", rank_counts)
-        print("\tSuit Counts:", suit_counts)
+        print_debug(hand)
     else:
         try:
             assert expected_category == resulting_category
         except AssertionError:
             print("TEST FAILED:")
             print("\tExpected vs Result:", expected_category, "vs", resulting_category)
-            print("\tSorted Poker Hand:", sorted_poker_hand)
-            print("\tCard counts:", card_counts)
-            print("\tRank Counts:", rank_counts)
-            print("\tSuit Counts:", suit_counts, "\n")
+            print_debug(hand)
 
 
 def main():
+    # test_hand = [
+    #     Card("c", "6"),
+    #     Card("d", "6"),
+    #     Card("h", "6"),
+    #     Card("s", "6"),
+    #     Card("JOKER"),
+    # ]
+    # test(test_hand, "five of a kind")
+
+    # test_hand = [
+    #     Card("c", "6"),
+    #     Card("d", "6"),
+    #     Card("h", "6"),
+    #     Card("JOKER"),
+    #     Card("JOKER"),
+    # ]
+    # test(test_hand, "five of a kind")
+
+    # test_hand = [
+    #     Card("h", "A"),
+    #     Card("h", "5"),
+    #     Card("h", "4"),
+    #     Card("h", "3"),
+    #     Card("h", "2"),
+    # ]
+    # test(test_hand, "straight flush")
+
+    # test_hand = [
+    #     Card("h", "6"),
+    #     Card("h", "5"),
+    #     Card("h", "4"),
+    #     Card("h", "3"),
+    #     Card("h", "2"),
+    # ]
+    # test(test_hand, "straight flush")
+
+    # test_hand = [
+    #     Card("JOKER"),
+    #     Card("JOKER"),
+    #     Card("h", "9"),
+    #     Card("h", "8"),
+    #     Card("h", "7"),
+    # ]
+    # test(test_hand, "straight flush")
+
     test_hand = [
         Card("c", "6"),
         Card("d", "6"),
         Card("h", "6"),
         Card("s", "6"),
-        Card("JOKER"),
-    ]
-    test(test_hand, "five of a kind")
-
-    test_hand = [
-        Card("c", "6"),
-        Card("d", "6"),
-        Card("h", "6"),
-        Card("JOKER"),
-        Card("JOKER"),
-    ]
-    test(test_hand, "five of a kind")
-
-    test_hand = [
-        Card("h", "A"),
-        Card("h", "5"),
-        Card("h", "4"),
-        Card("h", "3"),
-        Card("h", "2"),
-    ]
-    test(test_hand, "straight flush")
-
-    test_hand = [
-        Card("h", "6"),
-        Card("h", "5"),
-        Card("h", "4"),
-        Card("h", "3"),
-        Card("h", "2"),
-    ]
-    test(test_hand, "straight flush")
-
-    test_hand = [
-        Card("JOKER"),
-        Card("JOKER"),
-        Card("h", "9"),
-        Card("h", "8"),
-        Card("h", "7"),
-    ]
-    test(test_hand, "straight flush")
-
-    test_hand = [
-        Card("c", "6"),
-        Card("d", "6"),
-        Card("h", "6"),
-        Card("s", "6"),
         Card("s", "A"),
     ]
     test(test_hand, "four of a kind")
 
-    test_hand = [
-        Card("c", "6"),
-        Card("d", "6"),
-        Card("h", "6"),
-        Card("JOKER"),
-        Card("s", "A"),
-    ]
-    test(test_hand, "four of a kind")
+    # test_hand = [
+    #     Card("c", "6"),
+    #     Card("d", "6"),
+    #     Card("h", "6"),
+    #     Card("JOKER"),
+    #     Card("s", "A"),
+    # ]
+    # test(test_hand, "four of a kind")
 
-    test_hand = [
-        Card("c", "6"),
-        Card("d", "6"),
-        Card("JOKER"),
-        Card("JOKER"),
-        Card("s", "A"),
-    ]
-    test(test_hand, "four of a kind")
-
-    test_hand = [
-        Card("c", "6"),
-        Card("JOKER"),
-        Card("JOKER"),
-        Card("d", "8"),
-        Card("s", "8"),
-    ]
-    test(test_hand, "full house")
+    # test_hand = [
+    #     Card("c", "6"),
+    #     Card("d", "6"),
+    #     Card("JOKER"),
+    #     Card("JOKER"),
+    #     Card("s", "A"),
+    # ]
+    # test(test_hand, "four of a kind")
 
     test_hand = [
         Card("c", "6"),
@@ -256,68 +265,77 @@ def main():
     ]
     test(test_hand, "full house")
 
-    test_hand = [
-        Card("c", "6"),
-        Card("d", "6"),
-        Card("JOKER"),
-        Card("d", "8"),
-        Card("s", "8"),
-    ]
-    test(test_hand, "full house")
+    # test_hand = [
+    #     Card("c", "6"),
+    #     Card("JOKER"),
+    #     Card("JOKER"),
+    #     Card("d", "8"),
+    #     Card("s", "8"),
+    # ]
+    # test(test_hand, "full house")
 
-    test_hand = [
-        Card("h", "J"),
-        Card("h", "A"),
-        Card("h", "9"),
-        Card("h", "8"),
-        Card("h", "7"),
-    ]
-    test(test_hand, "flush")
+    # test_hand = [
+    #     Card("c", "6"),
+    #     Card("d", "6"),
+    #     Card("JOKER"),
+    #     Card("d", "8"),
+    #     Card("s", "8"),
+    # ]
+    # test(test_hand, "full house")
 
-    test_hand = [
-        Card("JOKER"),
-        Card("h", "A"),
-        Card("h", "9"),
-        Card("JOKER"),
-        Card("h", "2"),
-    ]
-    test(test_hand, "flush")
+    # test_hand = [
+    #     Card("h", "J"),
+    #     Card("h", "A"),
+    #     Card("h", "9"),
+    #     Card("h", "8"),
+    #     Card("h", "7"),
+    # ]
+    # test(test_hand, "flush")
 
-    test_hand = [
-        Card("JOKER"),
-        Card("h", "A"),
-        Card("h", "2"),
-        Card("h", "8"),
-        Card("h", "4"),
-    ]
-    test(test_hand, "flush")
+    # test_hand = [
+    #     Card("JOKER"),
+    #     Card("h", "A"),
+    #     Card("h", "9"),
+    #     Card("JOKER"),
+    #     Card("h", "2"),
+    # ]
+    # test(test_hand, "flush")
 
-    test_hand = [
-        Card("h", "J"),
-        Card("h", "10"),
-        Card("c", "9"),
-        Card("d", "8"),
-        Card("d", "7"),
-    ]
-    test(test_hand, "straight")
+    # test_hand = [
+    #     Card("JOKER"),
+    #     Card("h", "A"),
+    #     Card("h", "2"),
+    #     Card("h", "8"),
+    #     Card("h", "4"),
+    # ]
+    # test(test_hand, "flush")
 
-    test_hand = [
-        Card("JOKER"),
-        Card("h", "10"),
-        Card("c", "9"),
-        Card("s", "8"),
-        Card("d", "7"),
-    ]
-    test(test_hand, "straight")
+    # test_hand = [
+    #     Card("h", "J"),
+    #     Card("h", "10"),
+    #     Card("c", "9"),
+    #     Card("d", "8"),
+    #     Card("d", "7"),
+    # ]
+    # test(test_hand, "straight")
 
-    test_hand = [
-        Card("JOKER"),
-        Card("JOKER"),
-        Card("s", "K"),
-        Card("d", "J"),
-        Card("h", "10"),
-    ]
-    test(test_hand, "straight")
+    # test_hand = [
+    #     Card("JOKER"),
+    #     Card("h", "10"),
+    #     Card("c", "9"),
+    #     Card("s", "8"),
+    #     Card("d", "7"),
+    # ]
+    # test(test_hand, "straight")
+
+    # test_hand = [
+    #     Card("JOKER"),
+    #     Card("JOKER"),
+    #     Card("s", "K"),
+    #     Card("d", "J"),
+    #     Card("h", "10"),
+    # ]
+    # test(test_hand, "straight")
 
     test_hand = [
         Card("h", "J"),
@@ -328,50 +346,41 @@ def main():
     ]
     test(test_hand, "three of a kind")
 
+    # test_hand = [
+    #     Card("h", "J"),
+    #     Card("h", "9"),
+    #     Card("c", "9"),
+    #     Card("JOKER"),
+    #     Card("d", "7"),
+    # ]
+    # test(test_hand, "three of a kind")
+
+    # test_hand = [
+    #     Card("JOKER"),
+    #     Card("JOKER"),
+    #     Card("s", "K"),
+    #     Card("d", "J"),
+    #     Card("h", "4"),
+    # ]
+    # test(test_hand, "three of a kind")
+
     test_hand = [
         Card("h", "J"),
         Card("h", "9"),
         Card("c", "9"),
-        Card("JOKER"),
-        Card("d", "7"),
-    ]
-    test(test_hand, "three of a kind")
-
-    test_hand = [
-        Card("JOKER"),
-        Card("JOKER"),
-        Card("s", "K"),
         Card("d", "J"),
-        Card("h", "4"),
-    ]
-    test(test_hand, "three of a kind")
-
-    test_hand = [
-        Card("h", "J"),
-        Card("h", "9"),
-        Card("c", "9"),
-        Card("d", "J"),
-        Card("d", "7"),
-    ]
-    test(test_hand, "two pair")
-
-    test_hand = [
-        Card("h", "J"),
-        Card("h", "9"),
-        Card("c", "9"),
-        Card("JOKER"),
         Card("d", "7"),
     ]
     test(test_hand, "two pair")
 
-    test_hand = [
-        Card("JOKER"),
-        Card("d", "A"),
-        Card("s", "K"),
-        Card("d", "J"),
-        Card("h", "4"),
-    ]
-    test(test_hand, "one pair")
+    # test_hand = [
+    #     Card("h", "J"),
+    #     Card("h", "9"),
+    #     Card("c", "9"),
+    #     Card("JOKER"),
+    #     Card("d", "7"),
+    # ]
+    # test(test_hand, "two pair")
 
     test_hand = [
         Card("h", "J"),
@@ -381,6 +390,15 @@ def main():
         Card("d", "7"),
     ]
     test(test_hand, "one pair")
+
+    # test_hand = [
+    #     Card("JOKER"),
+    #     Card("d", "A"),
+    #     Card("s", "K"),
+    #     Card("d", "J"),
+    #     Card("h", "4"),
+    # ]
+    # test(test_hand, "one pair")
 
     test_hand = [
         Card("h", "A"),
